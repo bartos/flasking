@@ -93,7 +93,7 @@ def delete_entry(post_id):
         # result = {'status': 2, 'message': 'Only logged in users can delete posts.'}
         abort(401)
     try:
-        db= get_db()
+        db = get_db()
         db.execute('delete from entries where id='+post_id)
         db.commit()
         result = {'status': 1, 'message':'Post deleted'}

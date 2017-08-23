@@ -10,9 +10,7 @@ class BasicTestCase(unittest.TestCase):
         tester = app.app.test_client(self)
         responce = tester.get('/',content_type="html/text")
         self.assertEqual(responce.status_code, 200)
-        # self.assertEqual(responce.data, b'Hello, World!')
-        # self.assertEqual(responce.status_code, 404)
-
+        
     def test_database(self):
         """test database file esists"""
         tester = os.path.exists('tasker.db')
@@ -98,11 +96,8 @@ class TaskerTestCase(unittest.TestCase):
             app.app.config['PASSWORD']
         )
 
-        rv = self.app.get('/delete/1')
-        
-
+        rv = self.app.get('/delete/1')   
         data = json.loads((rv.data).decode('utf-8'))
-        print("Data: %s" %data)
         self.assertEqual(data['status'], 1)
 
 
